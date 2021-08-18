@@ -1,0 +1,394 @@
+{
+  "seed": 34484229741370303258408146705011974599,
+  "prev_hash": 16118942210857863497,
+  "iterations": 120,
+  "resources": {
+    "food": 120,
+    "wood": 0,
+    "stone": 0,
+    "skins": 0,
+    "herbs": 0,
+    "ore": 0,
+    "leather": 0,
+    "piety": 0,
+    "metal": 0,
+    "gold": 0,
+    "corpses": 0
+  },
+  "citizens": {
+    "idle": 0,
+    "farmers": 0,
+    "woodcutters": 0,
+    "miners": 0
+  },
+  "land": {
+    "total_land": 1000,
+    "tents": 0,
+    "wooden_huts": 0,
+    "barns": 0,
+    "wood_stockpiles": 0,
+    "stone_stockpiles": 0
+  },
+  "log": [
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    },
+    {
+      "Collect": "Food"
+    }
+  ]
+}
