@@ -1,394 +1,76 @@
 {
-  "seed": 34484229741370303258408146705011974599,
-  "prev_hash": 16118942210857863497,
-  "iterations": 120,
+  "seed": -141872649309347578469772012024767025949,
+  "prev_hash": 18149962571641140812,
+  "iterations": 142,
   "resources": {
-    "food": 120,
-    "wood": 0,
-    "stone": 0,
-    "skins": 0,
-    "herbs": 0,
-    "ore": 0,
-    "leather": 0,
-    "piety": 0,
-    "metal": 0,
-    "gold": 0,
-    "corpses": 0
+    "food": 99.4,
+    "food_prod_rate": 1.2,
+    "food_prod_rate_multiplier": 1.0,
+    "max_food": 200.0,
+    "wood": 15.0,
+    "wood_prod_rate": 0.0,
+    "wood_prod_rate_multiplier": 1.0,
+    "max_wood": 200.0,
+    "stone": 0.0,
+    "stone_prod_rate": 0.0,
+    "stone_prod_rate_multiplier": 1.0,
+    "max_stone": 200.0,
+    "skins": 12.0,
+    "herbs": 3.0,
+    "ore": 0.0,
+    "leather": 0.0,
+    "piety": 0.0,
+    "metal": 0.0,
+    "gold": 0.0,
+    "corpses": 0.0
   },
   "citizens": {
     "idle": 0,
-    "farmers": 0,
+    "farmers": 1,
     "woodcutters": 0,
-    "miners": 0
+    "miners": 0,
+    "max_population": 3
   },
   "land": {
     "total_land": 1000,
     "tents": 0,
-    "wooden_huts": 0,
+    "wooden_huts": 1,
     "barns": 0,
     "wood_stockpiles": 0,
     "stone_stockpiles": 0
   },
   "log": [
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    },
-    {
-      "Collect": "Food"
-    }
+    [
+      {
+        "Collect": "Food"
+      },
+      27
+    ],
+    [
+      {
+        "Collect": "Wood"
+      },
+      35
+    ],
+    [
+      {
+        "Build": "WoodenHut"
+      },
+      1
+    ],
+    [
+      "RecruitCitizen",
+      1
+    ],
+    [
+      {
+        "AssignJob": "Farmer"
+      },
+      1
+    ],
+    [
+      "Idle",
+      77
+    ]
   ]
 }
