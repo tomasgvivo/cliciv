@@ -42,7 +42,7 @@ impl Citizens {
                 Job::Farmer if self.farmers > 0 => Ok(Self { idle: self.idle + 1, farmers: self.farmers - 1, ..self }),
                 Job::Woodcutter if self.woodcutters > 0 => Ok(Self { idle: self.idle + 1, woodcutters: self.woodcutters - 1, ..self }),
                 Job::Miner if self.miners > 0 => Ok(Self { idle: self.idle + 1, miners: self.miners - 1, ..self }),
-                job => Err(IterationError::NotEnaughtWorkersInJob(job.clone()))
+                job => Err(IterationError::NoWorkersInJob(job.clone()))
             },
             Action::Build(building) => Ok(Self { max_population: self.max_population + building.population_capacity_increase(), ..self }),
             _ => Ok(self)

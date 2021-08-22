@@ -1,5 +1,5 @@
-use super::resources::{Resource, Resources, PrimaryResource};
-use super::errors::{CheckError, Error, IterationError};
+use super::resources::{Resources};
+use super::errors::{CheckError, IterationError};
 use super::actions::Action;
 use super::land::Land;
 use super::citizens::Citizens;
@@ -26,130 +26,138 @@ pub struct State {
     pub resources: Resources,
     citizens: Citizens,
     land: Land,
-    log: Vec<LogEntry>
+    log: Vec<LogEntry>,
+    nonces: Vec<usize>
 }
 
 impl State {
     pub fn new(seed: i128) -> Self {
-        Self {
-            seed,
-            prev_hash: 0,
-            iterations: 0,
-            log: Default::default(),
-            resources: Default::default(),
-            citizens: Default::default(),
-            land: Default::default()
-        }
+        Self { seed, ..Default::default() }
     }
 
     fn get_initial_state(&self) -> Self {
-        Self {
-            seed: self.seed,
-            prev_hash: 0,
-            iterations: 0,
-            log: Default::default(),
-            resources: Default::default(),
-            citizens: Default::default(),
-            land: Default::default()
-        }
+        Self::new(self.seed)
     }
 
     /**
      * Check if the current state is valid by rebuilding it step by step.
      */
     pub fn check(&self) -> Result<(), CheckError> {
-        let state = Self::get_initial_state(&self).apply_log(self.log.clone())
-            .or_else(|error| Err(CheckError::InvalidStateRecreation(error)))?;
+        let mut state = Self {
+            nonces: self.nonces.clone(),
+            ..Self::get_initial_state(&self)
+        };
 
-        if self.hash() == state.hash() {
+        for log_entry in &self.log {
+            for _ in 0..log_entry.1 {
+                let iteration = state.iterations + 1;
+                let nonce = self.nonces[state.iterations];
+                state = state.do_apply_action(log_entry.0.clone())
+                    .or_else(|error| Err(CheckError::InvalidStateRecreation(iteration, error)))?;
+            }
+        }
+
+        if self.hash(self.prev_iteration_nonce()) == state.hash(state.prev_iteration_nonce()) {
             Ok(())
         } else {
             Err(CheckError::HashMismatch)
         }
     }
 
+    pub fn repeat(self, times: usize, action: Action) -> Result<Self, IterationError> {
+        let mut state = self;
+
+        for _ in 0..times {
+            state = state.apply_action(action.clone())?;
+        }
+
+        Ok(state)
+    }
+
+    fn prev_iteration_nonce(&self) -> usize {
+        self.nonces[self.iterations]
+    }
+
+    fn do_apply_action(self, action: Action) -> Result<Self, IterationError> {
+        let mut ctx = self.get_context();
+
+        Ok(Self {
+            prev_hash: self.hash(self.prev_iteration_nonce()),
+            iterations: self.iterations + 1,
+            resources: self.resources.work(&mut ctx)?.apply_action(&action, &mut ctx)?,
+            citizens: self.citizens.apply_action(&action, &mut ctx)?,
+            land: self.land.apply_action(&action, &mut ctx)?,
+            log: {
+                let mut log: Vec<LogEntry> = vec!{};
+    
+                for log_entry in [self.log, vec!{(action, 1)}].concat() {
+                    if log.len() > 0 {
+                        let last_index = log.len() - 1;
+        
+                        if log[last_index].0 == log_entry.0 {
+                            log[last_index].1 += 1;
+                            continue;
+                        }
+                    }
+    
+                    log.push(log_entry);
+                }
+    
+                log
+            },
+            ..self
+        })
+    }
+
     /**
      * Get apply_action state from current state and an optional action.
      */
     pub fn apply_action(self, action: Action) -> Result<Self, IterationError> {
-        let mut ctx = self.get_context();
-        let prev_hash = self.hash();
-        let seed = self.seed;
-        let iterations = self.iterations + 1;
-        let resources = self.resources.work(&mut ctx)?.apply_action(&action, &mut ctx)?;
-        let citizens = self.citizens.apply_action(&action, &mut ctx)?;
-        let land = self.land.apply_action(&action, &mut ctx)?;
-
-        let log = {
-            let mut log: Vec<LogEntry> = vec!{};
-
-            for log_entry in [self.log, vec!{(action, 1)}].concat() {
-                if log.len() > 0 {
-                    let last_index = log.len() - 1;
-    
-                    if log[last_index].0 == log_entry.0 {
-                        log[last_index].1 += 1;
-                        continue;
-                    }
-                }
-
-                log.push(log_entry);
-            }
-
-            log
-        };
-
-        Ok(Self {
-            prev_hash,
-            seed,
-            iterations,
-            resources,
-            citizens,
-            land,
-            log
-        })
+        Ok(self.do_apply_action(action)?.commit())
     }
 
-    pub fn apply_log(self, log: Vec<LogEntry>) -> Result<Self, IterationError> {
-        let hash = self.hash();
-        let mut state = self;
+    fn calculate_nonce(&self) -> usize {
+        let max_hash = self.max_hash();
+        let mut nonce = 0;
 
-        for log_entry in log {
-            for _ in 0..log_entry.1 {
-                state = state.apply_action(log_entry.0.clone())?;
-            }
+        while self.hash(nonce) > max_hash {
+            nonce += 1;
         }
 
-        Ok(state)
+        nonce
     }
 
-    pub fn apply_and_check_log(self, log: Vec<LogEntry>) -> Result<Self, CheckError> {
-        let mut state = self;
-
-        for log_entry in log {
-            for _ in 0..log_entry.1 {
-                state.check()?;
-
-                state = state.apply_action(log_entry.0.clone())
-                    .or_else(|error| Err(CheckError::InvalidStateRecreation(error)))?;
-            }
+    fn commit(self) -> Self {
+        let nonce = self.calculate_nonce();
+        Self {
+            nonces: [ self.nonces, vec!{nonce} ].concat(),
+            ..self
         }
-
-        Ok(state)
     }
 
     /**
      * Get current state hash.
      */
-    pub fn hash(&self) -> u64 {
+    pub fn hash(&self, nonce: usize) -> u64 {
         let mut hasher = DefaultHasher::default();
         hasher.write_i128(self.seed);
         hasher.write_u64(self.prev_hash);
         hasher.write_usize(self.iterations);
+        hasher.write_usize(nonce);
         hasher.write_u64(self.resources.hash());
         hasher.write_u64(self.citizens.hash());
         hasher.write_u64(self.land.hash());
         hasher.finish()
+    }
+
+    fn max_hash(&self) -> u64 {
+        let next_power = self.iterations.next_power_of_two();
+        let mut exponent = 0;
+        while ((next_power >> exponent) & 1) != 1 {
+            exponent += 1;
+        }
+
+        u64::MAX >> exponent
     }
 
     /**
@@ -200,6 +208,21 @@ impl State {
     fn get_context(&self) -> Context {
         Context {
             rng: self.get_rng()
+        }
+    }
+}
+
+impl Default for State {
+    fn default() -> Self {
+        Self {
+            seed: 0,
+            prev_hash: 0,
+            iterations: 0,
+            resources: Default::default(),
+            citizens: Default::default(),
+            land: Default::default(),
+            log: Default::default(),
+            nonces: vec!{0}
         }
     }
 }
@@ -258,5 +281,22 @@ impl Display for State {
             writeln!(f, "\tx{}\t{:?}", log_entry.1, log_entry.0)?;
         }
         Ok(())
+    }
+}
+
+
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn hash() {
+        let iteration: u64 = 1040324;
+        let next_power = iteration.next_power_of_two();
+        let mut exponent = 0;
+        while ((next_power >> exponent) & 1) != 1 {
+            exponent += 1;
+        }
+
+        let max_hash = u64::MAX >> exponent;
     }
 }
